@@ -39,6 +39,10 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public', 'index.html'));
+});
+
 app.get('/auth/github', (req, res) => {
   const url = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=repo,user:email`;
   res.redirect(url);
